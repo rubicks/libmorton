@@ -26,8 +26,11 @@ dnl   [AC_MSG_ERROR([libz missing])])
 
 
 dnl Checks for header files.
-
 AC_CHECK_HEADERS([limits.h],[],[AC_MSG_ERROR([stdlib.h missing])],[])
+AC_CHECK_HEADERS([stdint.h],[],[AC_MSG_ERROR([stdint.h missing])],[])
+AC_CHECK_HEADERS([stdlib.h],[],[AC_MSG_ERROR([stdlib.h missing])],[])
+AC_CHECK_HEADERS([string.h],[],[AC_MSG_ERROR([string.h missing])],[])
+
 dnl AC_CHECK_HEADER([endian.h],[],[AC_MSG_ERROR([endian.h missing])])
 dnl AC_CHECK_HEADER([stdint.h],[],[AC_MSG_ERROR([stdint.h missing])])
 
