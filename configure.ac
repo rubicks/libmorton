@@ -1,11 +1,11 @@
-# github.com/rubicks/mortonlib/configure.ac
+# github.com/rubicks/morton/configure.ac
 
 AC_PREREQ([2.68])
-AC_INIT([mortonlib],
+AC_INIT([morton],
         [m4_esyscmd_s([git describe --always --dirty])],
         [rubicks00@gmail.com],
-        [mortonlib],
-        [https://github.com/rubicks/mortonlib])
+        [morton],
+        [https://github.com/rubicks/morton])
 AC_LANG_PUSH([C])
 AC_CONFIG_SRCDIR([morton.h])
 AC_CONFIG_HEADERS([config.h])

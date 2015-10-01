@@ -1,4 +1,4 @@
-/* github.com/rubicks/mortonlib/test_morton.c */
+/* github.com/rubicks/morton/test_morton.c */
 
 #include <assert.h>
 #include <limits.h>

@@ -1,7 +1,7 @@
-/* github.com/rubicks/mortonlib/morton.h */
+/* github.com/rubicks/morton/morton.h */
 
-#ifndef ___MORTONLIB___MORTON_H___
-#define ___MORTONLIB___MORTON_H___
+#ifndef ___MORTON___MORTON_H___
+#define ___MORTON___MORTON_H___
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,4 +16,4 @@ unsigned morton_decode(unsigned);
 }
 #endif
 
-#endif  // ndef ___MORTONLIB___MORTON_H___
+#endif  // ndef ___MORTON___MORTON_H___

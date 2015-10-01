@@ -1,4 +1,4 @@
-/* github.com/rubicks/mortonlib/morton.c */
+/* github.com/rubicks/morton/morton.c */
 
 #include "morton.h"
 
