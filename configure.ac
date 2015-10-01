@@ -1,6 +1,6 @@
 # github.com/rubicks/morton/configure.ac
 
-AC_PREREQ([2.68])
+AC_PREREQ([2.69])
 AC_INIT([morton],
         [m4_esyscmd_s([git describe --always --dirty])],
         [rubicks00@gmail.com],
