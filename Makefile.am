@@ -13,6 +13,7 @@ AM_CFLAGS =		\
 
 lib_LTLIBRARIES = libmorton.la
 libmorton_la_SOURCES = morton.h morton.c
+include_HEADERS = morton.h
 
 
 # bin_PROGRAMS = demo
