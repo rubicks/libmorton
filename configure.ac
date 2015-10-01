@@ -13,7 +13,8 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects dist-bzip2 dist-xz tar-pax])
 LT_PREREQ([2.4.6])
 #LT_INIT([dlopen])
-LT_INIT([disable-shared])
+#LT_INIT([disable-shared])
+LT_INIT([static shared])
 
 # Checks for programs.
 AC_PROG_CC

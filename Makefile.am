@@ -27,12 +27,11 @@ include_HEADERS = morton.h
 # When check_PROGRAMS are linked against static noinst_LTLIBRARIES, automake
 # generates them as stand-alone binaries.
 
-# noinst_LTLIBRARIES = libcommon.la
-# libcommon_la_SOURCES = $(libmorton_la_SOURCES)
+noinst_LTLIBRARIES = libcommon.la
+libcommon_la_SOURCES = $(libmorton_la_SOURCES)
 
 check_PROGRAMS = test_morton
-
 test_morton_SOURCES = test_morton.c
-test_morton_LDADD = libmorton.la
+test_morton_LDADD = libcommon.la
 
 TESTS = $(check_PROGRAMS)
