@@ -1,4 +1,4 @@
-# To use GCC and G++ 4.9
+# github.com/rubicks/morton/circle.yml
 machine:
   services:
     - docker
