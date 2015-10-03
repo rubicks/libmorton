@@ -17,9 +17,9 @@ run \
     make      \
     man       \
     tar       \
-    xz
-
-run wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
+    xz        \
+  && \
+  wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
 
 add . .
 
