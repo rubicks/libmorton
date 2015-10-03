@@ -1,21 +1,8 @@
 # To use GCC and G++ 4.9
 machine:
-  pre:
-    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 10
-    - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 10
-    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
-    - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
-  post:
-    - wget -O- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sudo sh
+  services:
+    - docker
 
 test:
   post:
-      export PROJECT_ROOT=$(pwd)      && \
-      cd $(mktemp -d)                 && \
-      autoreconf -ivf ${PROJECT_ROOT} && \
-      ${PROJECT_ROOT}/configure       && \
-      make                            && \
-      make check                      && \
-      make distcheck                  && \
-      make install
-
+    - docker build -t morton . && docker run --rm -it /bin/bash -c ./build.sh
