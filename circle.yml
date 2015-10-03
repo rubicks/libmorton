@@ -8,6 +8,13 @@ machine:
 
 test:
   post:
+    - set -e
+    - export PROJECT_ROOT=$(pwd)
+    - cd $(mktemp -d)
+    - autoreconf -ivf ${PROJECT_ROOT}
+    - ${PROJECT_ROOT}/configure
+    - make
     - make check
     - make distcheck
+    - make install
 
