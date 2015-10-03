@@ -3,12 +3,13 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-AM_CFLAGS =    \
-  -Wall        \
-  -Wconversion \
-  -Werror      \
-  -Wextra      \
-  -pedantic-errors
+AM_CFLAGS =        \
+  -Wall            \
+  -Wconversion     \
+  -Werror          \
+  -Wextra          \
+  -pedantic-errors \
+  -std=c11
 
 
 lib_LTLIBRARIES = libmorton.la

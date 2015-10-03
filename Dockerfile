@@ -10,6 +10,7 @@ run \
     autoconf  \
     automake  \
     coreutils \
+    file      \
     g++       \
     git       \
     libtool   \
