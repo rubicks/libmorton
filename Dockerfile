@@ -15,7 +15,8 @@ run \
     libtool   \
     make      \
     man       \
-    tar
+    tar       \
+    xz
 
 run wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
 
