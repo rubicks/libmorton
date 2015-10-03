@@ -25,4 +25,4 @@ add . .
 
 run ./build.sh
 
-cmd /bin/sh
+cmd make install
