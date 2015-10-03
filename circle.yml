@@ -5,5 +5,5 @@ machine:
 
 test:
   post:
-    - docker build -t morton . && docker run --rm -it morton /bin/bash -c ./build.sh
+    - docker build -t morton . && docker run -it morton /bin/bash -c 'make install'
 
