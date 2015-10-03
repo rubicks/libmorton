@@ -30,8 +30,13 @@ include_HEADERS = morton.h
 noinst_LTLIBRARIES = libcommon.la
 libcommon_la_SOURCES = $(libmorton_la_SOURCES)
 
-check_PROGRAMS = test_morton
-test_morton_SOURCES = test_morton.c
-test_morton_LDADD = libcommon.la
+check_PROGRAMS = \
+  test_impl      \
+  test_iface
+
+test_impl_SOURCES = test/impl.c
+
+test_iface_SOURCES = test/iface.c
+test_iface_LDADD = libmorton.la
 
 TESTS = $(check_PROGRAMS)
