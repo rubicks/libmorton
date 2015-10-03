@@ -59,3 +59,7 @@ script:
   - make
   - make check
   - make distcheck
+
+notifications:
+  - email: false
+
