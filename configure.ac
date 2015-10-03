@@ -2,7 +2,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([morton],
-        [m4_esyscmd_s([git describe --always --dirty])],
+        [m4_esyscmd_s([git describe --always --dirty --tags])],
         [rubicks00@gmail.com],
         [morton],
         [https://github.com/rubicks/morton])
