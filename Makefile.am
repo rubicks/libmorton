@@ -8,8 +8,7 @@ AM_CFLAGS =        \
   -Wconversion     \
   -Werror          \
   -Wextra          \
-  -pedantic-errors \
-  -std=c11
+  -pedantic-errors
 
 
 lib_LTLIBRARIES = libmorton.la
