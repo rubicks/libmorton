@@ -21,8 +21,12 @@ run \
   && \
   wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
 
+workdir /morton
+
 add . .
 
-run ./build.sh
+workdir /morton/_build
+
+run /morton/build.sh
 
 cmd make install
