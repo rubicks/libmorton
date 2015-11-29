@@ -19,12 +19,6 @@ LT_INIT([static shared])
 # Checks for programs.
 AC_PROG_CC
 
-
-AX_CHECK_COMPILE_FLAG([-std=c11],
-                      [CFLAGS+=" -std=c11"],
-                      [AC_MSG_ERROR([cannot compile C11 code])])
-
-
 # Checks for libraries.
 
 dnl AC_CHECK_LIB([z],[gzopen],[],

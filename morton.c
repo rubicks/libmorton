@@ -145,13 +145,17 @@ typedef union {
   _rgba_type rgba_;
 } _rgba_union;
 
-_rgba_type _rgba(uint32_t n) {
+_rgba_type
+_rgba(uint32_t n)
+{
   _rgba_union un;
   un.uint32_ = n;
   return un.rgba_;
 }
 
-static unsigned _expand(unsigned v) {
+static unsigned
+_expand(unsigned v)
+{
   v &= 0x0000ff;
   v ^= v << 8;
   v &= 0x00f00f;
@@ -162,7 +166,9 @@ static unsigned _expand(unsigned v) {
   return v;
 }
 
-static unsigned _shrink(unsigned v) {
+static unsigned
+_shrink(unsigned v)
+{
   v &= 0x249249;
   v ^= v >> 2;
   v &= 0x0c30c3;
@@ -173,7 +179,9 @@ static unsigned _shrink(unsigned v) {
   return v;
 }
 
-static unsigned _encode(unsigned n) {
+static unsigned
+_encode(unsigned n)
+{
   _rgba_union un;
   un.uint32_ = n;
   unsigned ret = 0;
@@ -183,7 +191,9 @@ static unsigned _encode(unsigned n) {
   return ret;
 }
 
-static unsigned _decode(unsigned n) {
+static unsigned
+_decode(unsigned n)
+{
   unsigned ret = 0;
   ret |= _shrink(n >> 2);
   ret <<= CHAR_BIT;
@@ -193,10 +203,26 @@ static unsigned _decode(unsigned n) {
   return ret;
 }
 
-unsigned morton_expand(unsigned n) { return _expand(n); }
+unsigned
+morton_expand(unsigned n)
+{
+  return _expand(n);
+}
 
-unsigned morton_shrink(unsigned n) { return _shrink(n); }
+unsigned
+morton_shrink(unsigned n)
+{
+  return _shrink(n);
+}
 
-unsigned morton_encode(unsigned n) { return _encode(n); }
+unsigned
+morton_encode(unsigned n)
+{
+  return _encode(n);
+}
 
-unsigned morton_decode(unsigned n) { return _decode(n); }
+unsigned
+morton_decode(unsigned n)
+{
+  return _decode(n);
+}
