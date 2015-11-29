@@ -5,5 +5,5 @@ machine:
 
 test:
   post:
-    - docker build -t morton . && docker run -it morton
+    - docker build -t morton .
 

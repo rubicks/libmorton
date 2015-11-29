@@ -1,0 +1,12 @@
+# github.com/rubicks/morton/morton.pc.in
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: @PACKAGE_NAME@
+Description: @PACKAGE_URL@
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -l@PACKAGE_NAME@
+Cflags: -I${includedir}

@@ -18,15 +18,21 @@ run \
     man       \
     tar       \
     xz        \
-  && \
-  wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
+  && >/stamp.txt date -uIs
 
-workdir /morton
+env WORKDIR=/morton
+
+workdir ${WORKDIR}
 
 add . .
 
-workdir /morton/_build
+run \
+  cd $(mktemp -d) && \
+  autoreconf -ivf ${WORKDIR} && \
+  ${WORKDIR}/configure && \
+  make && \
+  make check && \
+  make distcheck && \
+  make install
 
-run /morton/build.sh
-
-cmd make install
+cmd /bin/sh

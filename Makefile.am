@@ -41,3 +41,6 @@ test_iface_SOURCES = test/iface.c
 test_iface_LDADD = libmorton.la
 
 TESTS = $(check_PROGRAMS)
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = morton.pc

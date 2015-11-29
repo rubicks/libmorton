@@ -33,7 +33,6 @@
 *~
 
 # autotools cruft
-*.in
 /_build/
 /aclocal.m4
 /autom4te.cache/

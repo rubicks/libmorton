@@ -10,5 +10,5 @@ services:
   - docker
 
 script:
-  - docker build -t morton . && docker run -it morton
+  - docker build -t morton .
 
