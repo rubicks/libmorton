@@ -1,7 +1,5 @@
 # morton
 
-[![Build Status](https://drone.io/github.com/rubicks/morton/status.png)](https://drone.io/github.com/rubicks/morton/latest)
-
 [![Build Status](https://travis-ci.org/rubicks/morton.svg)](https://travis-ci.org/rubicks/morton)
 
 [![Circle CI](https://circleci.com/gh/rubicks/morton.png?style=shield)](https://circleci.com/gh/rubicks/morton)
