@@ -1,6 +1,5 @@
 # github.com/rubicks/morton/Makefile.am
 
-
 ACLOCAL_AMFLAGS = -I m4
 
 AM_CFLAGS =        \
@@ -11,16 +10,9 @@ AM_CFLAGS =        \
   -pedantic-errors \
   -std=c99
 
-
 lib_LTLIBRARIES = libmorton.la
 libmorton_la_SOURCES = morton.h morton.c
 include_HEADERS = morton.h
-
-
-# bin_PROGRAMS = demo
-# demo_SOURCES = demo.cc
-# demo_LDADD = libmorton.la
-
 
 # When check_PROGRAMS are linked against dynamic lib_LTLIBRARIES, automake
 # generates them as posix shell scripts.
@@ -43,4 +35,4 @@ test_iface_LDADD = libmorton.la
 TESTS = $(check_PROGRAMS)
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = morton.pc
+pkgconfig_DATA = libmorton.pc

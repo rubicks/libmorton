@@ -6,16 +6,12 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#if HAVE_CONFIG_H
-#include "config.h"
-#else
-#error "missing config.h"
-#endif
-
 #include "morton.c"
 
 /* returns the largest power of two that does not exceed the given number */
-unsigned long _floor2(unsigned long v) {
+unsigned long
+_floor2(unsigned long v)
+{
   unsigned long ret;
   do {
     ret = v;
@@ -23,13 +19,17 @@ unsigned long _floor2(unsigned long v) {
   return ret;
 }
 
-unsigned long _cardinality(unsigned long v) {
+unsigned long
+_cardinality(unsigned long v)
+{
   unsigned long c = 0;
   for (; v; ++c) v &= v - 1;
   return c;
 }
 
-unsigned _part3(unsigned v) {
+unsigned
+_part3(unsigned v)
+{
   v &= 0xffffff;
   v = (v | (v << 16)) & (unsigned)0x0000ff;
   v = (v | (v << 8)) & (unsigned)0x00f00f;
@@ -40,20 +40,9 @@ unsigned _part3(unsigned v) {
 
 #define N_BITS(v) (sizeof(v) * CHAR_BIT)
 
-#if 0
-std::string _bitstr(unsigned v) {
-  std::string ret = "";
-  do {
-    ret = ((1 & v) ? "1" : "0") + ret;
-  } while (v >>= 1);
-  /* for( unsigned m = 1 << _log2(v) ; m ; m >>=1 ){ */
-  /*   ret += ( v & m ) ? "1" : "0" ; */
-  /* } */
-  return ret + "b";
-}
-#endif
-
-int main(int argc, char** argv) {
+int
+main(int argc, char** argv)
+{
   for (int i = 0; i < argc; ++i) {
     printf("argv[%d] == \"%s\"", i, argv[i]);
   }

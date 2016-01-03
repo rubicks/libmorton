@@ -1,7 +1,7 @@
 # github.com/rubicks/morton/configure.ac
 
 AC_PREREQ([2.69])
-AC_INIT([morton],
+AC_INIT([libmorton],
         [m4_esyscmd_s([git describe --always --dirty --tags])],
         [rubicks00@gmail.com],
         [morton],
@@ -18,19 +18,19 @@ LT_INIT([static shared])
 
 # Checks for programs.
 PKG_PROG_PKG_CONFIG([])
-AC_PROG_CC
+AC_PROG_CC_STDC
 
 # Checks for header files.
-AC_CHECK_HEADERS([limits.h],[],[AC_MSG_ERROR([stdlib.h missing])],[])
-AC_CHECK_HEADERS([stdint.h],[],[AC_MSG_ERROR([stdint.h missing])],[])
-AC_CHECK_HEADERS([stdlib.h],[],[AC_MSG_ERROR([stdlib.h missing])],[])
-AC_CHECK_HEADERS([string.h],[],[AC_MSG_ERROR([string.h missing])],[])
+AC_HEADER_STDC # stdlib, stdarg, string, float.h
+AC_CHECK_HEADERS([limits.h],[],[AC_MSG_ERROR([limits.h missing])],[])
+AC_CHECK_HEADERS([inttypes.h],[],[AC_MSG_ERROR([inttypes.h missing])],[])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
 AC_C_BIGENDIAN([AC_DEFINE([IS_BIG_ENDIAN],[1],[define if big endian])],
                [AC_DEFINE([IS_LITTLE_ENDIAN],[1],[define if little endian])],
                [AC_MSG_ERROR([unknown endianness])])
+
 AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
@@ -40,6 +40,5 @@ AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 
-AC_CONFIG_FILES([Makefile])
-AC_CONFIG_FILES([morton.pc])
+AC_CONFIG_FILES([Makefile libmorton.pc])
 AC_OUTPUT

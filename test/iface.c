@@ -1,21 +1,17 @@
-/* github.com/rubicks/morton/test_morton.c */
+/* github.com/rubicks/morton/test/iface.c */
 
 #include <assert.h>
+#include <inttypes.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-
-#if HAVE_CONFIG_H
-#include "config.h"
-#else
-#error "missing config.h"
-#endif
 
 #include "morton.h"
 
 /* returns the largest power of two that does not exceed the given number */
-unsigned long _floor2(unsigned long v) {
+unsigned long
+_floor2(unsigned long v)
+{
   unsigned long ret;
   do {
     ret = v;
@@ -23,7 +19,9 @@ unsigned long _floor2(unsigned long v) {
   return ret;
 }
 
-unsigned long _cardinality(unsigned long v) {
+unsigned long
+_cardinality(unsigned long v)
+{
   unsigned long c = 0;
   for (; v; ++c) {
     v &= v - 1;
@@ -31,7 +29,9 @@ unsigned long _cardinality(unsigned long v) {
   return c;
 }
 
-unsigned _part3(unsigned v) {
+unsigned
+_part3(unsigned v)
+{
   v &= 0xffffff;
   v = (v | (v << 16)) & (unsigned)0x0000ff;
   v = (v | (v << 8)) & (unsigned)0x00f00f;
@@ -40,7 +40,9 @@ unsigned _part3(unsigned v) {
   return v;
 }
 
-int main(int argc, char** argv) {
+int
+main(int argc, char** argv)
+{
   for (int i = 0; i < argc; ++i) {
     printf("argv[%d] == \"%s\"\n", i, argv[i]);
   }
