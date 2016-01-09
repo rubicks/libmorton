@@ -27,9 +27,7 @@ AC_CHECK_HEADERS([inttypes.h],[],[AC_MSG_ERROR([inttypes.h missing])],[])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
-AC_C_BIGENDIAN([AC_DEFINE([IS_BIG_ENDIAN],[1],[define if big endian])],
-               [AC_DEFINE([IS_LITTLE_ENDIAN],[1],[define if little endian])],
-               [AC_MSG_ERROR([unknown endianness])])
+AC_CHECK_DECL([__BYTE_ORDER__],[],[AC_MSG_ERROR([undefined __BYTE_ORDER__])])
 
 AC_TYPE_INT8_T
 AC_TYPE_INT16_T
