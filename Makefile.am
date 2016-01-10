@@ -10,8 +10,7 @@ AM_CFLAGS =        \
   -pedantic-errors \
   -std=c99
 
-noinst_LTLIBRARIES = libcommon.la
-libcommon_la_SOURCES = morton.h morton.c
+include_HEADERS = morton.h
 
 # When check_PROGRAMS are dynamically linked against lib_LTLIBRARIES, automake
 # generates them as posix shell scripts.
@@ -20,9 +19,8 @@ libcommon_la_SOURCES = morton.h morton.c
 # generates them as stand-alone binaries.
 
 lib_LTLIBRARIES = libmorton.la
-libmorton_la_SOURCES =
-libmorton_la_LIBADD = libcommon.la
-include_HEADERS = morton.h
+libmorton_la_SOURCES = morton.c morton.h
+libmorton_la_LDFLAGS = -export-symbols-regex '^morton_'
 
 check_PROGRAMS = \
   test_impl      \
