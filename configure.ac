@@ -27,7 +27,13 @@ AC_CHECK_HEADERS([inttypes.h],[],[AC_MSG_ERROR([inttypes.h missing])],[])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
-AC_CHECK_DECL([__BYTE_ORDER__],[],[AC_MSG_ERROR([undefined __BYTE_ORDER__])])
+
+AC_CHECK_DECL([__BYTE_ORDER__],
+              [],[AC_MSG_ERROR([undefined __BYTE_ORDER__])])
+AC_CHECK_DECL([__ORDER_LITTLE_ENDIAN__],
+              [],[AC_MSG_ERROR([undefined __ORDER_LITTLE_ENDIAN__])])
+AC_CHECK_DECL([__ORDER_BIG_ENDIAN__],
+              [],[AC_MSG_ERROR([undefined __ORDER_BIG_ENDIAN__])])
 
 AC_TYPE_INT8_T
 AC_TYPE_INT16_T
