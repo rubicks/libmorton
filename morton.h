@@ -1,4 +1,4 @@
-/* github.com/rubicks/morton/morton.h */
+/* github.com/rubicks/libmorton/morton.h */
 
 #ifndef MORTON_H
 #define MORTON_H

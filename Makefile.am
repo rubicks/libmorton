@@ -1,4 +1,4 @@
-# github.com/rubicks/morton/Makefile.am
+# github.com/rubicks/libmorton/Makefile.am
 
 ACLOCAL_AMFLAGS = -I m4
 

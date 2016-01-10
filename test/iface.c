@@ -1,4 +1,4 @@
-/* github.com/rubicks/morton/test/iface.c */
+/* github.com/rubicks/libmorton/test/iface.c */
 
 #include <assert.h>
 #include <inttypes.h>
