@@ -125,12 +125,12 @@ static unsigned const _p32[256] = {
 typedef struct {
 #if 0
   /*  */
-#elif IS_LITTLE_ENDIAN
+#elif __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
   uint8_t r_;
   uint8_t g_;
   uint8_t b_;
   uint8_t a_;
-#elif IS_BIG_ENDIAN
+#elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
   uint8_t a_;
   uint8_t b_;
   uint8_t g_;
