@@ -7,10 +7,12 @@
 extern "C" {
 #endif
 
-unsigned morton_expand(unsigned);
-unsigned morton_shrink(unsigned);
-unsigned morton_encode(unsigned);
-unsigned morton_decode(unsigned);
+#include <stdint.h>
+
+uint32_t morton_expand(uint32_t);
+uint32_t morton_shrink(uint32_t);
+uint32_t morton_encode(uint32_t);
+uint32_t morton_decode(uint32_t);
 
 #ifdef __cplusplus
 }

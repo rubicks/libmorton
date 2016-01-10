@@ -3,7 +3,6 @@
 #include "morton.h"
 
 #include <limits.h>
-#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -15,7 +14,7 @@
 
 // clang-format off
 
-static unsigned const _p30[256] = {
+static uint32_t const _p30[256] = {
   0x000000,0x000001,0x000008,0x000009,0x000040,0x000041,0x000048,0x000049,
   0x000200,0x000201,0x000208,0x000209,0x000240,0x000241,0x000248,0x000249,
   0x001000,0x001001,0x001008,0x001009,0x001040,0x001041,0x001048,0x001049,
@@ -50,7 +49,7 @@ static unsigned const _p30[256] = {
   0x249200,0x249201,0x249208,0x249209,0x249240,0x249241,0x249248,0x249249,
 };
 
-static unsigned const _p31[256] = {
+static uint32_t const _p31[256] = {
   0x000000,0x000002,0x000010,0x000012,0x000080,0x000082,0x000090,0x000092,
   0x000400,0x000402,0x000410,0x000412,0x000480,0x000482,0x000490,0x000492,
   0x002000,0x002002,0x002010,0x002012,0x002080,0x002082,0x002090,0x002092,
@@ -85,7 +84,7 @@ static unsigned const _p31[256] = {
   0x492400,0x492402,0x492410,0x492412,0x492480,0x492482,0x492490,0x492492,
 };
 
-static unsigned const _p32[256] = {
+static uint32_t const _p32[256] = {
   0x000000,0x000004,0x000020,0x000024,0x000100,0x000104,0x000120,0x000124,
   0x000800,0x000804,0x000820,0x000824,0x000900,0x000904,0x000920,0x000924,
   0x004000,0x004004,0x004020,0x004024,0x004100,0x004104,0x004120,0x004124,
@@ -153,8 +152,8 @@ _rgba(uint32_t n)
   return un.rgba_;
 }
 
-static unsigned
-_expand(unsigned v)
+static uint32_t
+_expand(uint32_t v)
 {
   v &= 0x0000ff;
   v ^= v << 8;
@@ -166,8 +165,8 @@ _expand(unsigned v)
   return v;
 }
 
-static unsigned
-_shrink(unsigned v)
+static uint32_t
+_shrink(uint32_t v)
 {
   v &= 0x249249;
   v ^= v >> 2;
@@ -179,22 +178,22 @@ _shrink(unsigned v)
   return v;
 }
 
-static unsigned
-_encode(unsigned n)
+static uint32_t
+_encode(uint32_t n)
 {
   _rgba_union un;
   un.uint32_ = n;
-  unsigned ret = 0;
+  uint32_t ret = 0;
   ret |= _p30[un.rgba_.r_];
   ret |= _p31[un.rgba_.g_];
   ret |= _p32[un.rgba_.b_];
   return ret;
 }
 
-static unsigned
-_decode(unsigned n)
+static uint32_t
+_decode(uint32_t n)
 {
-  unsigned ret = 0;
+  uint32_t ret = 0;
   ret |= _shrink(n >> 2);
   ret <<= CHAR_BIT;
   ret |= _shrink(n >> 1);
@@ -203,26 +202,26 @@ _decode(unsigned n)
   return ret;
 }
 
-unsigned
-morton_expand(unsigned n)
+uint32_t
+morton_expand(uint32_t n)
 {
   return _expand(n);
 }
 
-unsigned
-morton_shrink(unsigned n)
+uint32_t
+morton_shrink(uint32_t n)
 {
   return _shrink(n);
 }
 
-unsigned
-morton_encode(unsigned n)
+uint32_t
+morton_encode(uint32_t n)
 {
   return _encode(n);
 }
 
-unsigned
-morton_decode(unsigned n)
+uint32_t
+morton_decode(uint32_t n)
 {
   return _decode(n);
 }
