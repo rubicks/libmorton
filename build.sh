@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# github.com/rubicks/morton/build.sh
+# github.com/rubicks/libmorton/build.sh
 
 set -eu
 _here=$(dirname $(readlink -f ${BASH_SOURCE}))
