@@ -19,12 +19,15 @@ include_HEADERS = morton.h
 # generates them as stand-alone binaries.
 
 lib_LTLIBRARIES = libmorton.la
-libmorton_la_SOURCES = morton.c morton.h
+libmorton_la_SOURCES = morton.c morton.h binlit.h
 libmorton_la_LDFLAGS = -export-symbols-regex '^morton_'
 
 check_PROGRAMS = \
-  test_impl      \
+  test_binlit \
+  test_impl \
   test_iface
+
+test_binlit_SOURCES = test/binlit.c
 
 test_impl_SOURCES = test/impl.c
 

@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "binlit.h"
 #include "morton.h"
 
 /* returns the largest power of two that does not exceed the given number */
@@ -48,6 +49,14 @@ main(int argc, char** argv)
   }
 
   assert(32 == _floor2(42));
+
+  assert(B8(1) == 1);
+  assert(B8(10) == 2);
+  assert(B8(100) == 4);
+  assert(B8(1000) == 8);
+  assert(B8(10000) == 16);
+  assert(B8(100000) == 32);
+  assert(B8(1000000) == 64);
 
   assert(3 == _cardinality(42));
   assert(3 == _cardinality(41));
