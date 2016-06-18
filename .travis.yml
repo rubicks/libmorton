@@ -1,14 +1,19 @@
-sudo: required
-
 language: c
+
+os:
+  - linux
+  - osx
 
 compiler:
   - gcc
   - clang
 
-services:
-  - docker
+install:
+  - wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
 
 script:
-  - docker build -t morton .
-
+  - mkdir -vp _build
+  - cd _build
+  - autoreconf -ivf ..
+  - ../configure
+  - make clean all check distcheck install
