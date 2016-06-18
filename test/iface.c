@@ -9,7 +9,7 @@
 #include "morton.h"
 
 /* returns the largest power of two that does not exceed the given number */
-unsigned long
+static unsigned long
 _floor2(unsigned long v)
 {
   unsigned long ret;
@@ -19,7 +19,7 @@ _floor2(unsigned long v)
   return ret;
 }
 
-unsigned long
+static unsigned long
 _cardinality(unsigned long v)
 {
   unsigned long c = 0;
@@ -29,7 +29,7 @@ _cardinality(unsigned long v)
   return c;
 }
 
-unsigned
+static unsigned
 _part3(unsigned v)
 {
   v &= 0xffffff;
