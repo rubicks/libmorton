@@ -1,24 +1,11 @@
-language: c
+# libmorton/.travis.yml
 
 sudo: required
 
-os:
-  - linux
+language: c
 
-compiler:
-  - gcc
-  - clang
-
-before_install:
-  - apt-get update
-
-install:
-  - apt-get install build-essential
-  - wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sudo sh
+services:
+  - docker
 
 script:
-  - mkdir -vp _build
-  - cd _build
-  - autoreconf -ivf ..
-  - ../configure
-  - make clean all check distcheck install
+  - docker build -t morton .
