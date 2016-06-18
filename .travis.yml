@@ -1,5 +1,7 @@
 language: c
 
+sudo: required
+
 os:
   - linux
   - osx
@@ -9,7 +11,7 @@ compiler:
   - clang
 
 install:
-  - wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sh
+  - wget -qO- https://raw.githubusercontent.com/rubicks/autotoolme/master/autotoolme.sh | sudo sh
 
 script:
   - mkdir -vp _build
