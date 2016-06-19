@@ -1,6 +1,7 @@
 /* github.com/rubicks/libmorton/binlit.h */
 
 #include "limits.h"
+#include "stdint.h"
 
 /* http://embeddedgurus.com/barr-code/2009/09/binary-literals-in-c/ */
 
