@@ -1,16 +1,18 @@
 # github.com/rubicks/libmorton/configure.ac
 
 AC_PREREQ([2.69])
-AC_INIT([libmorton],
+AC_INIT([morton],
         [m4_esyscmd_s([git describe --always --dirty --tags])],
         [rubicks00@gmail.com],
-        [libmorton],
+        [morton],
         [https://github.com/rubicks/libmorton])
 AC_LANG_PUSH([C])
 AC_CONFIG_SRCDIR([morton.h])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects dist-bzip2 dist-xz tar-pax])
+AM_PROG_AR
+
 LT_PREREQ([2.4.6])
 #LT_INIT([dlopen])
 #LT_INIT([disable-shared])
@@ -19,7 +21,6 @@ LT_INIT
 # Checks for programs.
 PKG_PROG_PKG_CONFIG([])
 AC_PROG_CC_STDC
-AM_PROG_AR
 
 # Checks for header files.
 AC_HEADER_STDC # stdlib, stdarg, string, float.h

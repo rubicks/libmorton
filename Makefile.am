@@ -2,11 +2,15 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-AM_CFLAGS =        \
-  -Wall            \
-  -Wconversion     \
-  -Werror          \
-  -Wextra          \
+AM_CPPFLAGS = \
+  -Wundef \
+  -Wunused
+
+AM_CFLAGS = \
+  -Wall \
+  -Wconversion \
+  -Werror \
+  -Wextra \
   -pedantic-errors \
   -std=c99
 

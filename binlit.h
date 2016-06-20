@@ -15,9 +15,6 @@
 
 /* user-visible macros */
 #define B8(d) ((uint8_t)_B8(_HEX(d)))
-#define B16(byte1, byte0)                    \
-  ((uint16_t)(B8(byte1) << (CHAR_BIT * 1)) | \
-   (uint16_t)(B8(byte0) << (CHAR_BIT * 0)))
-#define B32(byte3, byte2, byte1, byte0)            \
-  ((uint32_t)B16(byte3, byte2) << (CHAR_BIT * 2) | \
-   (uint32_t)B16(byte1, byte0) << (CHAR_BIT * 0))
+#define B16(byte1, byte0) ((uint16_t)(B8(byte1) << 8) | (uint16_t)(B8(byte0)))
+#define B32(byte3, byte2, byte1, byte0) \
+  ((uint32_t)(B16(byte3, byte2) << 16) | (uint32_t)(B16(byte1, byte0)))
