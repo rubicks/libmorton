@@ -1,13 +1,13 @@
 /* github.com/rubicks/libmorton/morton.h */
 
-#ifndef MORTON_H
-#define MORTON_H
+#ifndef MORTON_MORTON_H
+#define MORTON_MORTON_H
+
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include <stdint.h>
 
 uint32_t morton_expand(uint32_t);
 uint32_t morton_shrink(uint32_t);
@@ -18,4 +18,4 @@ uint32_t morton_decode(uint32_t);
 }
 #endif
 
-#endif  // ndef MORTON_H
+#endif  // ndef MORTON_MORTON_H

@@ -1,10 +1,8 @@
-/* github.com/rubicks/libmorton/test/iface.c */
+/* github.com/rubicks/libmorton/test/binlit.c */
 
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <inttypes.h>
-//#include <limits.h>
 
 #include "binlit.h"
 

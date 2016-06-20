@@ -8,47 +8,15 @@
 
 #include "binlit.h"
 #include "morton.h"
-
-/* returns the largest power of two that does not exceed the given number */
-static unsigned long
-_floor2(unsigned long v)
-{
-  unsigned long ret;
-  do {
-    ret = v;
-  } while (v &= v - 1);
-  return ret;
-}
-
-static unsigned long
-_cardinality(unsigned long v)
-{
-  unsigned long c = 0;
-  for (; v; ++c) {
-    v &= v - 1;
-  }
-  return c;
-}
-
-static unsigned
-_part3(unsigned v)
-{
-  v &= 0xffffff;
-  v = (v | (v << 16)) & (unsigned)0x0000ff;
-  v = (v | (v << 8)) & (unsigned)0x00f00f;
-  v = (v | (v << 4)) & (unsigned)0x0c30c3;
-  v = (v | (v << 2)) & (unsigned)0x249249;
-  return v;
-}
+#include "util.h"
 
 int
 main(int argc, char** argv)
 {
-  for (int i = 0; i < argc; ++i) {
-    printf("argv[%d] == \"%s\"\n", i, argv[i]);
-  }
+  (void)argc;
+  (void)argv;
 
-  assert(32 == _floor2(42));
+  assert(32 == util_floor2(42));
 
   assert(B8(1) == 1);
   assert(B8(10) == 2);
@@ -58,10 +26,10 @@ main(int argc, char** argv)
   assert(B8(100000) == 32);
   assert(B8(1000000) == 64);
 
-  assert(3 == _cardinality(42));
-  assert(3 == _cardinality(41));
-  assert(3 == _cardinality(37));
-  assert(3 == _cardinality(35));
+  assert(3 == util_cardinality(42));
+  assert(3 == util_cardinality(41));
+  assert(3 == util_cardinality(37));
+  assert(3 == util_cardinality(35));
 
   for (unsigned v = 0; v < 256; ++v) {
     assert(morton_encode(v << 0 * CHAR_BIT) == morton_expand(v) << 0);
@@ -69,11 +37,44 @@ main(int argc, char** argv)
     assert(morton_encode(v << 2 * CHAR_BIT) == morton_expand(v) << 2);
   }
 
-  assert(0x249249 == _part3(0xff));
+  assert(0x249249 == util_part3(0xff));
 
   for (unsigned v = 0; v < 0x1000000; ++v) {
     assert(morton_decode(morton_encode(v)) == v);
   }
+
+  assert(B24(00000000, 00000000, 00000000) ==
+         morton_encode(B24(00000000, 00000000, 00000000)));
+  assert(B24(00000000, 00000010, 01001001) ==
+         morton_encode(B24(00000000, 00000000, 00001111)));
+  assert(B24(00100100, 10010000, 00000000) ==
+         morton_encode(B24(00000000, 00000000, 11110000)));
+  assert(B24(00100100, 10010010, 01001001) ==
+         morton_encode(B24(00000000, 00000000, 11111111)));
+
+  assert(B24(00000000, 00000100, 10010010) ==
+         morton_encode(B24(00000000, 00001111, 00000000)));
+  assert(B24(00000000, 00000110, 11011011) ==
+         morton_encode(B24(00000000, 00001111, 00001111)));
+  assert(B24(00100100, 10010100, 10010010) ==
+         morton_encode(B24(00000000, 00001111, 11110000)));
+  assert(B24(00100100, 10010110, 11011011) ==
+         morton_encode(B24(00000000, 00001111, 11111111)));
+
+  assert(B24(01001001, 00100100, 10010010) ==
+         morton_encode(B24(00000000, 11111111, 00000000)));
+  assert(B24(01101101, 10110110, 11011011) ==
+         morton_encode(B24(00000000, 11111111, 11111111)));
+
+  assert(B24(10010010, 01001001, 00100100) ==
+         morton_encode(B24(11111111, 00000000, 00000000)));
+  assert(B24(10110110, 11011011, 01101101) ==
+         morton_encode(B24(11111111, 00000000, 11111111)));
+  assert(B24(11011011, 01101101, 10110110) ==
+         morton_encode(B24(11111111, 11111111, 00000000)));
+
+  assert(B24(11111111, 11111111, 11111111) ==
+         morton_encode(B24(11111111, 11111111, 11111111)));
 
   return EXIT_SUCCESS;
 }
